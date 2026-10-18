@@ -1,0 +1,38 @@
+[
+  {
+    "id": "79095f01-740e-4a60-a8b4-b8eb4aafe1dd",
+    "user_id": "8c382e3b-7660-4e1d-899d-1c3167ba8a4d",
+    "name": "wifi",
+    "amount": 499.99,
+    "category": "Subscription",
+    "due_date": "2026-10-24",
+    "frequency": "weekly",
+    "notes": "",
+    "status": "upcoming",
+    "payments": [
+      {
+        "id": "c3e777c8-80ee-4eca-896d-0e7ecab5bb4c",
+        "amount": 499.99,
+        "paid_date": "2026-10-17",
+        "recorded_at": "2026-10-17T12:45:43.719Z"
+      }
+    ],
+    "created_at": "2026-10-17T12:45:31.692Z",
+    "updated_at": "2026-10-17T12:45:54.568Z",
+    "last_paid_date": "2026-10-17"
+  },
+  {
+    "id": "bf4c6ce3-6559-4d92-8123-b8d6b8c3285b",
+    "user_id": "8c382e3b-7660-4e1d-899d-1c3167ba8a4d",
+    "name": "gold",
+    "amount": 300,
+    "category": "Subscription",
+    "due_date": "2026-10-17",
+    "frequency": "monthly",
+    "notes": "",
+    "status": "upcoming",
+    "payments": [],
+    "created_at": "2026-10-17T12:51:19.665Z",
+    "updated_at": "2026-10-17T12:51:19.665Z"
+  }
+]

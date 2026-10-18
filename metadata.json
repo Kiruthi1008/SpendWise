@@ -1,0 +1,6 @@
+{
+  "name": "SpendWise - Personal Expense & Income Manager",
+  "description": "A responsive, installable Single Page Application for managing personal expenses, incomes, visual analytics, and user profiles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

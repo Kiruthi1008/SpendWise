@@ -1,0 +1,387 @@
+{
+  "users": [
+    {
+      "id": "demo-user-1",
+      "name": "Alex Morgan",
+      "username": "alexmorgan",
+      "email": "alex.morgan@example.com",
+      "mobile": "+1987654321",
+      "gender": "Male",
+      "dob": "1995-08-14",
+      "password_hash": "$2b$10$kYe1niqCuY6HQPDvdWG0c.kzFasd0CcCSXaD2U2mL6ga5SeEmdJ..",
+      "created_at": "2026-10-17T04:02:23.199Z",
+      "updated_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "40c6a12f-f54f-4290-9acb-b819fc98060a",
+      "name": "Taylor Swift",
+      "username": "tswift",
+      "email": "taylor@example.com",
+      "mobile": "+15551234567",
+      "gender": "Female",
+      "dob": "1989-12-13",
+      "password_hash": "$2b$10$82C6dabN9jLXsVAuDSVVEuiUN6AkTzdUIjJWEotzArcA9dJDjaZj.",
+      "created_at": "2026-10-17T04:02:39.576Z",
+      "updated_at": "2026-10-17T04:02:39.576Z"
+    },
+    {
+      "id": "b965e9fd-9665-4fa2-9586-74c4b9e52572",
+      "name": "fd",
+      "username": "f",
+      "email": "skiruthi1008@gmail.com",
+      "mobile": "fvlvo",
+      "gender": "Female",
+      "dob": "2007-01-01",
+      "password_hash": "$2b$10$9Qne7ZyCViEuhSj.fM/XsO1b0ZTPnjDV0xuB39G1zTdGdUutr2kwy",
+      "created_at": "2026-10-17T04:04:36.764Z",
+      "updated_at": "2026-10-17T04:04:36.764Z"
+    }
+  ],
+  "expense_categories": [
+    {
+      "id": "51ab86e1-640b-4dcc-87d8-c37c2a10f6ca",
+      "user_id": null,
+      "name": "Food & Dining",
+      "icon": "Utensils",
+      "color": "#f97316",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "01666334-a4e7-403c-bdd9-10d784c4027f",
+      "user_id": null,
+      "name": "Housing & Rent",
+      "icon": "Home",
+      "color": "#6366f1",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "543bbc22-c51b-44e5-a272-1ed97fe7a7df",
+      "user_id": null,
+      "name": "Utilities & Bills",
+      "icon": "Zap",
+      "color": "#eab308",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "acb0290d-16bc-47f8-af97-c30dfc7331b3",
+      "user_id": null,
+      "name": "Transportation",
+      "icon": "Car",
+      "color": "#3b82f6",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "3a8afe6e-357c-4325-905c-4b679bd53908",
+      "user_id": null,
+      "name": "Health & Fitness",
+      "icon": "HeartPulse",
+      "color": "#ec4899",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "4f8dd1ab-e5d9-4df5-9c86-268d01aa08af",
+      "user_id": null,
+      "name": "Entertainment",
+      "icon": "Film",
+      "color": "#8b5cf6",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "2337232d-d841-4a07-9b5e-3cf3ee4bfb2b",
+      "user_id": null,
+      "name": "Shopping & Groceries",
+      "icon": "ShoppingBag",
+      "color": "#14b8a6",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "e7b3fb99-4245-48b2-aa3e-62065de885b0",
+      "user_id": null,
+      "name": "Education",
+      "icon": "GraduationCap",
+      "color": "#06b6d4",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "0953e243-dce7-422c-b3e9-2b0378f718e3",
+      "user_id": null,
+      "name": "Miscellaneous",
+      "icon": "Tag",
+      "color": "#64748b",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    }
+  ],
+  "income_sources": [
+    {
+      "id": "b6cc96d8-f847-4886-a258-9d9aae532808",
+      "user_id": null,
+      "name": "Salary",
+      "icon": "Briefcase",
+      "color": "#10b981",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "ad4faef3-9831-480a-bec6-545a27759f93",
+      "user_id": null,
+      "name": "Freelance & Contract",
+      "icon": "Laptop",
+      "color": "#059669",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "9d48e1e2-36d8-465e-b403-99b022eca255",
+      "user_id": null,
+      "name": "Business Profits",
+      "icon": "TrendingUp",
+      "color": "#047857",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "559b91e7-7ba6-4df1-af2f-839f5ce8d707",
+      "user_id": null,
+      "name": "Investments & Dividends",
+      "icon": "PiggyBank",
+      "color": "#0284c7",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "ee090400-e476-453a-a1a5-9ff290454adf",
+      "user_id": null,
+      "name": "Rental Property",
+      "icon": "Building",
+      "color": "#7c3aed",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "905c080b-9609-4a95-87b3-2214baecfcff",
+      "user_id": null,
+      "name": "Gifts & Awards",
+      "icon": "Gift",
+      "color": "#d946ef",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "bae43733-3f09-4c38-8fc4-dc940aa6abbf",
+      "user_id": null,
+      "name": "Other Income",
+      "icon": "Coins",
+      "color": "#64748b",
+      "is_custom": false,
+      "created_at": "2026-10-17T04:02:23.199Z"
+    }
+  ],
+  "expenses": [
+    {
+      "id": "3a187ced-e2a2-484e-a6b9-f3f94db57d32",
+      "user_id": "demo-user-1",
+      "date": "2026-10-02",
+      "time": "11:15",
+      "category_id": "01666334-a4e7-403c-bdd9-10d784c4027f",
+      "category_name": "Housing & Rent",
+      "amount": 1400,
+      "note": "Monthly apartment rental",
+      "created_at": "2026-10-17T04:02:23.199Z",
+      "updated_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "6cd0b228-25e3-469a-bdf9-2656d003689f",
+      "user_id": "demo-user-1",
+      "date": "2026-10-04",
+      "time": "18:45",
+      "category_id": "51ab86e1-640b-4dcc-87d8-c37c2a10f6ca",
+      "category_name": "Food & Dining",
+      "amount": 86.5,
+      "note": "Weekly fresh groceries from Whole Foods",
+      "created_at": "2026-10-17T04:02:23.199Z",
+      "updated_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "2d284fe0-e57b-40ed-a664-60f2a603cda8",
+      "user_id": "demo-user-1",
+      "date": "2026-10-06",
+      "time": "10:00",
+      "category_id": "543bbc22-c51b-44e5-a272-1ed97fe7a7df",
+      "category_name": "Utilities & Bills",
+      "amount": 115,
+      "note": "High-speed fiber internet and electric bill",
+      "created_at": "2026-10-17T04:02:23.199Z",
+      "updated_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "faf4e664-6731-4438-9cdc-fb2c05b5086b",
+      "user_id": "demo-user-1",
+      "date": "2026-10-08",
+      "time": "16:20",
+      "category_id": "acb0290d-16bc-47f8-af97-c30dfc7331b3",
+      "category_name": "Transportation",
+      "amount": 55,
+      "note": "Metro card refill & rideshare fare",
+      "created_at": "2026-10-17T04:02:23.199Z",
+      "updated_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "161d3ff9-4c9f-4a2f-867c-a6a5629a3291",
+      "user_id": "demo-user-1",
+      "date": "2026-10-12",
+      "time": "19:30",
+      "category_id": "2337232d-d841-4a07-9b5e-3cf3ee4bfb2b",
+      "category_name": "Shopping & Groceries",
+      "amount": 120.75,
+      "note": "Ergonomic workspace desk accessories",
+      "created_at": "2026-10-17T04:02:23.199Z",
+      "updated_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "cb4a78e8-54b5-425a-bfb5-aab5ddc2aee2",
+      "user_id": "b965e9fd-9665-4fa2-9586-74c4b9e52572",
+      "date": "2026-10-17",
+      "time": "09:35",
+      "category_id": "51ab86e1-640b-4dcc-87d8-c37c2a10f6ca",
+      "category_name": "Food & Dining",
+      "amount": 0.01,
+      "note": "",
+      "created_at": "2026-10-17T04:04:58.329Z",
+      "updated_at": "2026-10-17T04:04:58.329Z"
+    }
+  ],
+  "incomes": [
+    {
+      "id": "65e6cc06-1a92-407e-97bf-74aa939651f6",
+      "user_id": "demo-user-1",
+      "date": "2026-10-01",
+      "time": "09:00",
+      "source_id": "b6cc96d8-f847-4886-a258-9d9aae532808",
+      "source_name": "Salary",
+      "amount": 4500,
+      "note": "Monthly salary disbursement",
+      "created_at": "2026-10-17T04:02:23.199Z",
+      "updated_at": "2026-10-17T04:02:23.199Z"
+    },
+    {
+      "id": "7828dc2c-ea58-4219-9cb0-4cd26b4e027e",
+      "user_id": "demo-user-1",
+      "date": "2026-10-10",
+      "time": "14:30",
+      "source_id": "ad4faef3-9831-480a-bec6-545a27759f93",
+      "source_name": "Freelance & Contract",
+      "amount": 850,
+      "note": "Web application UI audit project",
+      "created_at": "2026-10-17T04:02:23.199Z",
+      "updated_at": "2026-10-17T04:02:23.199Z"
+    }
+  ],
+  "project_tasks": [
+    {
+      "id": "task-1",
+      "phase": "Phase 0: Planning & Timetable",
+      "task_name": "Prepare Google Sheets Project Timetable & WBS Schedule",
+      "start_date": "2026-10-10",
+      "end_date": "2026-10-12",
+      "status": "Approved",
+      "assigned_to": "Project Manager & Lead Dev",
+      "deliverable": "Google Sheets Timetable & Task Matrix with Approval Gateway",
+      "approved_by": "Project Sponsor / Stakeholder",
+      "approved_at": "2026-10-12T10:00:00Z"
+    },
+    {
+      "id": "task-2",
+      "phase": "Phase 1: Architecture & Database",
+      "task_name": "Design MySQL Database Schema & Repository Structure",
+      "start_date": "2026-10-12",
+      "end_date": "2026-10-13",
+      "status": "Completed",
+      "assigned_to": "Backend Developer",
+      "deliverable": "schema.mysql.sql with Users, Incomes, Expenses, and Categories tables"
+    },
+    {
+      "id": "task-3",
+      "phase": "Phase 1: Backend API",
+      "task_name": "Develop Authentication (Email/Mobile) & Profile Endpoints",
+      "start_date": "2026-10-13",
+      "end_date": "2026-10-14",
+      "status": "Completed",
+      "assigned_to": "Backend Developer",
+      "deliverable": "Express REST API with Bcrypt security & dual identifier login"
+    },
+    {
+      "id": "task-4",
+      "phase": "Phase 1: Financial Management",
+      "task_name": "Build Income & Expense CRUD with Default & Custom Categories",
+      "start_date": "2026-10-14",
+      "end_date": "2026-10-15",
+      "status": "Completed",
+      "assigned_to": "Full Stack Developer",
+      "deliverable": "Expense & Income modules with date, time, amount, note, and custom types"
+    },
+    {
+      "id": "task-5",
+      "phase": "Phase 1: Frontend SPA & Dashboard",
+      "task_name": "Implement Responsive Dashboard with Visual Analytics & PWA",
+      "start_date": "2026-10-15",
+      "end_date": "2026-10-16",
+      "status": "Completed",
+      "assigned_to": "Frontend Engineer",
+      "deliverable": "Single Page App, charts, breakdowns, install prompt, and mobile drawer"
+    },
+    {
+      "id": "task-6",
+      "phase": "Phase 1: Governance & Version Control",
+      "task_name": "Setup OneDrive Backup Automation & GitHub Version Control Logs",
+      "start_date": "2026-10-16",
+      "end_date": "2026-10-17",
+      "status": "Approved",
+      "assigned_to": "DevOps / PM",
+      "deliverable": "Automated MySQL dump exports, commit tracking, and code snapshot archives"
+    }
+  ],
+  "backup_logs": [
+    {
+      "id": "b5f0f583-7304-4474-8c67-af8073661f97",
+      "backup_type": "MySQL Dump",
+      "target_destination": "Local Download",
+      "status": "Completed",
+      "file_name": "spendwise_db_dump_2026-10-17.sql",
+      "file_size_bytes": 9275,
+      "commit_hash": "9a31efc",
+      "commit_message": "chore(db): Full MySQL relational schema & data export",
+      "created_at": "2026-10-17T04:14:45.001Z"
+    },
+    {
+      "id": "1146fa61-e079-44c9-96b5-8479dcaa32b7",
+      "backup_type": "MySQL Dump",
+      "target_destination": "Local Download",
+      "status": "Completed",
+      "file_name": "spendwise_db_dump_2026-10-17.sql",
+      "file_size_bytes": 8464,
+      "commit_hash": "9a31efc",
+      "commit_message": "chore(db): Full MySQL relational schema & data export",
+      "created_at": "2026-10-17T04:02:50.835Z"
+    },
+    {
+      "id": "f44381a2-3e22-4b7b-9173-852f035c15c7",
+      "backup_type": "MySQL Dump",
+      "target_destination": "OneDrive Shared Folder",
+      "status": "Completed",
+      "file_name": "spendwise_backup_20261016.sql",
+      "file_size_bytes": 42800,
+      "commit_hash": "9a31efc",
+      "commit_message": "feat: Phase 1 release with installable PWA and dual-auth",
+      "created_at": "2026-10-17T04:02:23.199Z"
+    }
+  ]
+}
