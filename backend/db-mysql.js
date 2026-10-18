@@ -29,7 +29,3 @@ export async function testConnection() {
 }
 
 export default pool;
-testConnection().catch((error) => {
-  console.error('MySQL connection failed:', error.message);
-  process.exitCode = 1;
-});
