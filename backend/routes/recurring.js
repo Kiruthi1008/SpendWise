@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
-import { db } from '../db.js';
+import db from '../db-mysql.js';
 import { requireAuth } from '../middleware/auth.js';
 
 const router = Router();
@@ -76,9 +76,6 @@ function addInterval(dateString, frequency, anchorDay, anchorMonth) {
     ).toISOString().slice(0, 10);
   }
 
-  // Monthly schedules retain their original day where possible.
-  // For example, a schedule created on the 31st uses the last
-  // day of February and returns to the 31st in March.
   const targetMonth = month;
   const targetYear = year + Math.floor(targetMonth / 12);
   const normalizedMonth = targetMonth % 12;
@@ -96,14 +93,14 @@ function addInterval(dateString, frequency, anchorDay, anchorMonth) {
   ).toISOString().slice(0, 10);
 }
 
-function processDueSchedules(schedules, userId) {
+async function processDueSchedules(schedules, userId) {
   const today = new Date().toISOString().slice(0, 10);
   let changed = false;
   let createdCount = 0;
 
   for (const schedule of schedules) {
     if (
-      schedule.user_id !== userId ||
+      String(schedule.user_id) !== String(userId) ||
       schedule.status !== 'active'
     ) {
       continue;
@@ -121,7 +118,7 @@ function processDueSchedules(schedules, userId) {
 
       if (!alreadyCreated) {
         if (schedule.type === 'expense') {
-          db.createExpense({
+          await db.createExpense({
             user_id: userId,
             date: runDate,
             time: schedule.time,
@@ -134,7 +131,7 @@ function processDueSchedules(schedules, userId) {
             recurring_schedule_id: schedule.id,
           });
         } else {
-          db.createIncome({
+          await db.createIncome({
             user_id: userId,
             date: runDate,
             time: schedule.time,
@@ -181,18 +178,15 @@ function processDueSchedules(schedules, userId) {
 }
 
 // GET /api/recurring
-// Processes due schedules and returns the authenticated user's schedules.
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const userId = req.user.id;
     const schedules = readSchedules();
-    const createdCount = processDueSchedules(schedules, userId);
+    const createdCount = await processDueSchedules(schedules, userId);
 
     const userSchedules = schedules
-      .filter((schedule) => schedule.user_id === userId)
-      .sort((a, b) =>
-        a.next_run_date.localeCompare(b.next_run_date)
-      );
+      .filter((schedule) => String(schedule.user_id) === String(userId))
+      .sort((a, b) => a.next_run_date.localeCompare(b.next_run_date));
 
     res.json({
       success: true,
@@ -209,7 +203,7 @@ router.get('/', (req, res) => {
 });
 
 // POST /api/recurring
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const userId = req.user.id;
 
@@ -258,10 +252,7 @@ router.post('/', (req, res) => {
       });
     }
 
-    if (
-      !time ||
-      !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)
-    ) {
+    if (!time || !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
       return res.status(400).json({
         success: false,
         message: 'Enter a valid transaction time.',
@@ -279,9 +270,10 @@ router.post('/', (req, res) => {
     let source = null;
 
     if (type === 'expense') {
-      category = db
-        .getExpenseCategories(userId)
-        .find((item) => item.id === category_id);
+      const categories = await db.getExpenseCategories(userId);
+      category = categories.find(
+        (item) => String(item.id) === String(category_id)
+      );
 
       if (!category) {
         return res.status(400).json({
@@ -290,9 +282,10 @@ router.post('/', (req, res) => {
         });
       }
     } else {
-      source = db
-        .getIncomeSources(userId)
-        .find((item) => item.id === source_id);
+      const sources = await db.getIncomeSources(userId);
+      source = sources.find(
+        (item) => String(item.id) === String(source_id)
+      );
 
       if (!source) {
         return res.status(400).json({
@@ -331,8 +324,7 @@ router.post('/', (req, res) => {
     schedules.push(schedule);
     saveSchedules(schedules);
 
-    // If the start date is today or earlier, process it immediately.
-    processDueSchedules(schedules, userId);
+    await processDueSchedules(schedules, userId);
 
     res.status(201).json({
       success: true,
@@ -356,7 +348,7 @@ router.patch('/:id/status', (req, res) => {
     const schedule = schedules.find(
       (item) =>
         item.id === req.params.id &&
-        item.user_id === req.user.id
+        String(item.user_id) === String(req.user.id)
     );
 
     if (!schedule) {
@@ -401,7 +393,7 @@ router.delete('/:id', (req, res) => {
       (item) =>
         !(
           item.id === req.params.id &&
-          item.user_id === req.user.id
+          String(item.user_id) === String(req.user.id)
         )
     );
 

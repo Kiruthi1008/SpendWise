@@ -1,7 +1,8 @@
+
 import { Router } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { db } from '../db.js';
+import db from '../db-mysql.js';
 import { JWT_SECRET, requireAuth } from '../middleware/auth.js';
 
 const router = Router();
@@ -12,14 +13,22 @@ function sanitizeUser(user) {
 }
 
 // Check username availability
-router.get('/check-username/:username', (req, res) => {
-  const { username } = req.params;
-  const existing = db.getUsers().find((u) => u.username.toLowerCase() === username.trim().toLowerCase());
-  res.json({ available: !existing });
+router.get('/check-username/:username', async (req, res) => {
+  try {
+    const { username } = req.params;
+    const users = await db.getUsers();
+    const existing = users.find(
+      (u) => u.username.toLowerCase() === username.trim().toLowerCase()
+    );
+    res.json({ available: !existing });
+  } catch (err) {
+    console.error('Username check error:', err);
+    res.status(500).json({ success: false, message: 'Unable to check username.' });
+  }
 });
 
 // POST /api/auth/register
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
   try {
     const { name, username, email, mobile, gender, dob, password } = req.body;
 
@@ -30,31 +39,27 @@ router.post('/register', (req, res) => {
     const cleanUsername = username.trim().toLowerCase();
     const cleanEmail = email.trim().toLowerCase();
     const cleanMobile = mobile.trim();
+    const users = await db.getUsers();
 
-    // Check unique username
-    if (db.getUsers().some((u) => u.username.toLowerCase() === cleanUsername)) {
+    if (users.some((u) => u.username.toLowerCase() === cleanUsername)) {
       return res.status(400).json({ success: false, message: 'Username is already taken. Please choose another.' });
     }
 
-    // Check unique email
-    if (db.getUsers().some((u) => u.email.toLowerCase() === cleanEmail)) {
+    if (users.some((u) => u.email.toLowerCase() === cleanEmail)) {
       return res.status(400).json({ success: false, message: 'Email is already registered. Please sign in or use another.' });
     }
 
-    // Check unique mobile
-    if (db.getUsers().some((u) => u.mobile === cleanMobile)) {
+    if (users.some((u) => u.mobile === cleanMobile)) {
       return res.status(400).json({ success: false, message: 'Mobile number is already registered.' });
     }
 
-    // Password validation
     if (password.length < 6) {
       return res.status(400).json({ success: false, message: 'Password must be at least 6 characters long.' });
     }
 
-    const salt = bcrypt.genSaltSync(10);
-    const password_hash = bcrypt.hashSync(password, salt);
+    const password_hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
-    const newUser = db.createUser({
+    const newUser = await db.createUser({
       name: name.trim(),
       username: cleanUsername,
       email: cleanEmail,
@@ -78,8 +83,8 @@ router.post('/register', (req, res) => {
   }
 });
 
-// POST /api/auth/login (Support email OR mobile number)
-router.post('/login', (req, res) => {
+// POST /api/auth/login
+router.post('/login', async (req, res) => {
   try {
     const { identifier, password } = req.body;
 
@@ -87,7 +92,7 @@ router.post('/login', (req, res) => {
       return res.status(400).json({ success: false, message: 'Please provide Email/Mobile and password.' });
     }
 
-    const user = db.findUserByEmailOrMobile(identifier);
+    const user = await db.findUserByEmailOrMobile(identifier);
 
     if (!user) {
       return res.status(401).json({ success: false, message: 'Invalid credentials. No user found with this email or mobile number.' });
@@ -114,14 +119,11 @@ router.post('/login', (req, res) => {
 
 // GET /api/auth/me
 router.get('/me', requireAuth, (req, res) => {
-  res.json({
-    success: true,
-    user: sanitizeUser(req.user),
-  });
+  res.json({ success: true, user: sanitizeUser(req.user) });
 });
 
 // PUT /api/auth/profile
-router.put('/profile', requireAuth, (req, res) => {
+router.put('/profile', requireAuth, async (req, res) => {
   try {
     const currentUserId = req.user.id;
     const { name, email, mobile, gender, dob } = req.body;
@@ -132,20 +134,23 @@ router.put('/profile', requireAuth, (req, res) => {
 
     const cleanEmail = email.trim().toLowerCase();
     const cleanMobile = mobile.trim();
+    const users = await db.getUsers();
 
-    // Check email uniqueness if modified
-    const otherEmailUser = db.getUsers().find((u) => u.email.toLowerCase() === cleanEmail && u.id !== currentUserId);
+    const otherEmailUser = users.find(
+      (u) => u.email.toLowerCase() === cleanEmail && u.id !== currentUserId
+    );
     if (otherEmailUser) {
       return res.status(400).json({ success: false, message: 'This email is already in use by another account.' });
     }
 
-    // Check mobile uniqueness if modified
-    const otherMobileUser = db.getUsers().find((u) => u.mobile === cleanMobile && u.id !== currentUserId);
+    const otherMobileUser = users.find(
+      (u) => u.mobile === cleanMobile && u.id !== currentUserId
+    );
     if (otherMobileUser) {
       return res.status(400).json({ success: false, message: 'This mobile number is already in use by another account.' });
     }
 
-    const updated = db.updateUser(currentUserId, {
+    const updated = await db.updateUser(currentUserId, {
       name: name.trim(),
       email: cleanEmail,
       mobile: cleanMobile,

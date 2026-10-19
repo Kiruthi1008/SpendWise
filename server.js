@@ -25,7 +25,7 @@ async function startServer() {
     res.json({
       status: 'ok',
       service: 'SpendWise API Server',
-      database: 'JSON file store',
+      database: 'MySQL',
       timestamp: new Date().toISOString(),
     });
   });

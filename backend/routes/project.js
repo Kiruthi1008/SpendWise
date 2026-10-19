@@ -1,8 +1,7 @@
 import { Router } from 'express';
 import fs from 'fs';
 import path from 'path';
-import { db } from '../db.js';
-
+import db from '../db-mysql.js';
 const router = Router();
 
 const DEFAULT_TIMETABLE_CSV = `Phase,Task Name,Start Date,End Date,Status,Assigned To,Deliverable,Approved By,Approved At
@@ -23,13 +22,25 @@ router.get('/timetable/csv', (_req, res) => {
 });
 
 // GET /api/project/backup/mysql
-router.get('/backup/mysql', (_req, res) => {
-  const dump = db.generateMySQLDump();
-  res.setHeader('Content-Type', 'application/sql');
-  res.setHeader('Content-Disposition', `attachment; filename="spendwise_mysql_backup_${new Date().toISOString().slice(0, 10)}.sql"`);
-  res.send(dump);
-});
+router.get('/backup/mysql', async (_req, res) => {
+  try {
+    const dump = await db.generateMySQLDump();
 
+    res.setHeader('Content-Type', 'application/sql');
+    res.setHeader(
+      'Content-Disposition',
+      `attachment; filename="spendwise_mysql_backup_${new Date().toISOString().slice(0, 10)}.sql"`
+    );
+
+    res.send(dump);
+  } catch (error) {
+    console.error('MySQL backup error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to generate MySQL backup.',
+    });
+  }
+});
 // GET /api/project/backup/json
 router.get('/backup/json', (_req, res) => {
   const dataPath = path.resolve(process.cwd(), 'backend/data/spendwise_data.json');

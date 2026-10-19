@@ -1,21 +1,21 @@
 import { Router } from 'express';
-import { db } from '../db.js';
+import db from '../db-mysql.js';
 import { requireAuth } from '../middleware/auth.js';
 
 const router = Router();
 router.use(requireAuth);
 
 // GET /api/dashboard/stats
-router.get('/stats', (req, res) => {
-  try {
+router.get('/stats', async (req, res) => {
+    try {
     const userId = req.user.id;
     const { month, year } = req.query;
     console.log("test",req.query);
 
-    const allExpenses = db.getExpenses(userId);
-    const allIncomes = db.getIncomes(userId);
-    const categories = db.getExpenseCategories(userId);
-    const sources = db.getIncomeSources(userId);
+   const allExpenses = await db.getExpenses(userId);
+const allIncomes = await db.getIncomes(userId);
+const categories = await db.getExpenseCategories(userId);
+const sources = await db.getIncomeSources(userId);
 
     // Filter by selected period if provided, otherwise all or current year
     const targetYear = year ? parseInt(String(year)) : new Date().getFullYear();
