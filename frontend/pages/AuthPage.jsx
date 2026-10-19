@@ -137,9 +137,9 @@ export const AuthPage = () => {
       <div className="absolute -bottom-20 right-0 w-80 h-80 bg-sky-300/15 rounded-full blur-3xl pointer-events-none" />
 
       {/* Top Header / PWA Action */}
-      <div className="absolute top-4 right-4 z-20">
+      {/* <div className="absolute top-4 right-4 z-20">
         <PWAInstallButton compact />
-      </div>
+      </div> */}
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center relative z-10 px-4">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-500 to-sky-400 text-white shadow-lg shadow-sky-500/25 mb-4 ring-4 ring-sky-100">

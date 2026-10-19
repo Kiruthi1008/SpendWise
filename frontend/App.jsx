@@ -166,7 +166,7 @@ const MainApplication = () => {
               <span>To-Dos ({todoSummary.totalPending || 0})</span>
             </button>
 
-            <PWAInstallButton compact />
+            {/* <PWAInstallButton compact /> */}
           </div>
         </header>
 

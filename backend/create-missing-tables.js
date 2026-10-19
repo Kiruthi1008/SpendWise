@@ -67,7 +67,6 @@ async function main() {
     `);
 
     await connection.commit();
-    console.log('Missing tables created or already exist.');
   } catch (error) {
     await connection.rollback();
     throw error;

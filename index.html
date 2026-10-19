@@ -2,28 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>SpendWise - Personal Expense & Income Manager</title>
-    <meta name="description" content="A responsive, installable Single Page Application for managing personal expenses, incomes, visual analytics, and user profiles." />
-    
-    <!-- OpenGraph / Social Meta -->
-    <meta property="og:title" content="SpendWise - Personal Expense & Income Manager" />
-    <meta property="og:description" content="Manage personal finances, track expense and income streams, visualize budget health, and analyze trends." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
 
-    <!-- PWA & Mobile Web App Meta -->
+    <title>SpendWise | Personal Expense &amp; Income Manager</title>
+
+    <meta
+      name="description"
+      content="SpendWise helps you manage personal expenses, track income, monitor budgets, and analyze your financial activity."
+    />
+
     <meta name="theme-color" content="#0284c7" />
+
+    <!-- Website favicon -->
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <link rel="shortcut icon" href="/icon.png" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="SpendWise | Personal Finance Manager" />
+    <meta
+      property="og:description"
+      content="Track expenses, manage income, monitor budgets, and understand your finances with SpendWise."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/icon.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="SpendWise | Personal Finance Manager" />
+    <meta
+      name="twitter:description"
+      content="Manage your expenses, income, and budgets with SpendWise."
+    />
+    <meta name="twitter:image" content="/icon.png" />
+
+    <!-- Progressive Web App -->
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="default"
+    />
     <meta name="apple-mobile-web-app-title" content="SpendWise" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+
+    <link rel="apple-touch-icon" href="/icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
   </head>
+
   <body class="bg-white text-slate-900 antialiased selection:bg-sky-500 selection:text-white min-h-screen">
     <div id="root"></div>
+
     <script type="module" src="/frontend/main.jsx"></script>
   </body>
 </html>

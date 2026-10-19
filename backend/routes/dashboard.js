@@ -10,7 +10,6 @@ router.get('/stats', async (req, res) => {
     try {
     const userId = req.user.id;
     const { month, year } = req.query;
-    console.log("test",req.query);
 
    const allExpenses = await db.getExpenses(userId);
 const allIncomes = await db.getIncomes(userId);

@@ -65,9 +65,9 @@ export const Sidebar = ({
               <span className="text-lg font-black tracking-tight text-slate-900">
                 SpendWise
               </span>
-              <span className="rounded-md border border-sky-200 bg-sky-100 px-1.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-sky-700">
+              {/* <span className="rounded-md border border-sky-200 bg-sky-100 px-1.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-sky-700">
                 PWA
-              </span>
+              </span> */}
             </div>
             <p className="text-[11px] font-semibold text-sky-600">
               Expense & Income Manager
@@ -84,7 +84,7 @@ export const Sidebar = ({
         </button>
       </div>
 
-      <div className="px-4 pb-2 pt-4">
+      {/* <div className="px-4 pb-2 pt-4">
         <div className="flex items-center justify-between rounded-2xl border border-sky-100 bg-gradient-to-r from-sky-50 to-white p-3">
           <div className="text-xs">
             <p className="font-extrabold text-slate-900">Install App</p>
@@ -92,7 +92,7 @@ export const Sidebar = ({
           </div>
           <PWAInstallButton compact />
         </div>
-      </div>
+      </div> */}
 
       <nav className="flex-1 space-y-1.5 overflow-y-auto px-4 py-3">
         <div className="px-3 pb-2 pt-1 text-[11px] font-black uppercase tracking-wider text-sky-700">
